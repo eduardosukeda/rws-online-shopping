@@ -18,16 +18,12 @@ public class Ordered {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@JsonIgnore
 	private Integer id;
 	@ManyToOne
-	@JsonIgnore
 	private Customer customer;
 	@OneToOne
-	@JsonIgnore
 	private Product product;
 	private Integer quantity;
-	@JsonIgnore
 	private BigDecimal price;
 
 	public Integer getId() {

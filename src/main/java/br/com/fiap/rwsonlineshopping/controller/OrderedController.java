@@ -1,29 +1,31 @@
 package br.com.fiap.rwsonlineshopping.controller;
 
+import br.com.fiap.rwsonlineshopping.dto.OrderedDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import br.com.fiap.rwsonlineshopping.entity.Ordered;
 import br.com.fiap.rwsonlineshopping.service.CustomerService;
 import br.com.fiap.rwsonlineshopping.service.OrderedService;
 import br.com.fiap.rwsonlineshopping.service.ProductService;
 
 @RestController
+@RequestMapping("ordered")
 public class OrderedController {
 
-	@Autowired
-	OrderedService orderedService;
+    private final OrderedService orderedService;
 
-	@Autowired
-	ProductService productService;
+    private final ProductService productService;
 
-	@Autowired
-	CustomerService customerService;
+    private final CustomerService customerService;
 
-	@PostMapping(path = "/ordered", produces = { "application/json" })
-	public void create(@RequestBody Ordered ordered, Integer idProduct, Integer idCustomer) {
-		orderedService.create(ordered, idProduct, idCustomer);
-	}
+    public OrderedController(OrderedService orderedService, ProductService productService, CustomerService customerService) {
+        this.orderedService = orderedService;
+        this.productService = productService;
+        this.customerService = customerService;
+    }
+
+    @PostMapping(produces = {"application/json"})
+    public OrderedDTO create(@RequestParam Integer quantity, @RequestParam Integer productId, @RequestParam Integer customerId) {
+        return orderedService.create(quantity, productId, customerId);
+    }
 }
