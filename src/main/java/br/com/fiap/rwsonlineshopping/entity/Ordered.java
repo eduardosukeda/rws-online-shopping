@@ -1,68 +1,54 @@
 package br.com.fiap.rwsonlineshopping.entity;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "TB_ORDERED")
 public class Ordered {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	@ManyToOne
-	private Customer customer;
-	@OneToOne
-	private Product product;
-	private Integer quantity;
-	private BigDecimal price;
 
-	public Integer getId() {
-		return id;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    @OneToOne
+    private Customer customer;
+    @OneToMany(mappedBy = "ordered", cascade = CascadeType.ALL)
+    private Set<ShoppingCart> shoppingCart = new HashSet<>();
+    private BigDecimal totalPrice;
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public Customer getCustomer() {
-		return customer;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
+    public Customer getCustomer() {
+        return customer;
+    }
 
-	public Product getProduct() {
-		return product;
-	}
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 
-	public void setProduct(Product product) {
-		this.product = product;
-	}
+    public Set<ShoppingCart> getShoppingCart() {
+        return shoppingCart;
+    }
 
-	public Integer getQuantity() {
-		return quantity;
-	}
+    public void setShoppingCart(Set<ShoppingCart> shoppingCart) {
+        this.shoppingCart = shoppingCart;
+    }
 
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
-	}
+    public BigDecimal getTotalPrice() {
+        return totalPrice;
+    }
 
-	public BigDecimal getPrice() {
-		return price;
-	}
-
-	public void setPrice(BigDecimal price) {
-		this.price = price;
-	}
+    public void setTotalPrice(BigDecimal totalPrice) {
+        this.totalPrice = totalPrice;
+    }
 }

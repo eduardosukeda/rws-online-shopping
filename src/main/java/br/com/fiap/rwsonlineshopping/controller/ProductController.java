@@ -1,6 +1,8 @@
 package br.com.fiap.rwsonlineshopping.controller;
 
 import br.com.fiap.rwsonlineshopping.dto.ProductDTO;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +21,8 @@ public class ProductController {
     }
 
     @PostMapping(produces = {"application/json"})
-    public ProductDTO create(@RequestBody ProductDTO productDTO) {
-        return productService.create(productDTO);
+    public ResponseEntity<ProductDTO> create(@RequestBody ProductDTO productDTO) {
+        ProductDTO response = productService.create(productDTO);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 }

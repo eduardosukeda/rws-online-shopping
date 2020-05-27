@@ -1,24 +1,26 @@
 package br.com.fiap.rwsonlineshopping.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.math.BigDecimal;
+import java.util.List;
 
 public class OrderedDTO {
 
     private Integer id;
     private Integer customerId;
-    private Integer productId;
-    private Integer quantity;
-    private BigDecimal price;
+    @JsonProperty("products")
+    private List<ProductDTO> productDTOList;
+    private BigDecimal totalPrice;
 
     public OrderedDTO() {
     }
 
-    public OrderedDTO(Integer id, Integer customerId, Integer productId, Integer quantity, BigDecimal price) {
+    public OrderedDTO(Integer id, Integer customerId, List<ProductDTO> productDTOList, BigDecimal totalPrice) {
         this.id = id;
         this.customerId = customerId;
-        this.productId = productId;
-        this.quantity = quantity;
-        this.price = price;
+        this.productDTOList = productDTOList;
+        this.totalPrice = totalPrice;
     }
 
     public Integer getId() {
@@ -37,27 +39,19 @@ public class OrderedDTO {
         this.customerId = customerId;
     }
 
-    public Integer getProductId() {
-        return productId;
+    public List<ProductDTO> getProductDTOList() {
+        return productDTOList;
     }
 
-    public void setProductId(Integer productId) {
-        this.productId = productId;
+    public void setProductDTOList(List<ProductDTO> productDTOList) {
+        this.productDTOList = productDTOList;
     }
 
-    public Integer getQuantity() {
-        return quantity;
+    public BigDecimal getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
+    public void setTotalPrice(BigDecimal totalPrice) {
+        this.totalPrice = totalPrice;
     }
 }
