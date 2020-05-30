@@ -45,4 +45,4 @@ Escolhemos o SQL Server, por ser um banco de dados relacional onde é altamente 
 
 ## RM's
 - Eduardo Sukeda de Arruda (335537)
-- André da Silva Brito (335444)
+- André Luiz Brito Silva (335444)
