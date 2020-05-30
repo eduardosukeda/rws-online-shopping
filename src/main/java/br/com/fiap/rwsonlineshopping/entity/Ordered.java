@@ -1,15 +1,16 @@
 package br.com.fiap.rwsonlineshopping.entity;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "TB_ORDERED")
-public class Ordered {
+public class Ordered implements Serializable {
 
+    private static final long serialVersionUID = -8090023549605344410L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +18,7 @@ public class Ordered {
     @OneToOne
     private Customer customer;
     @OneToMany(mappedBy = "ordered", cascade = CascadeType.ALL)
-    private Set<ShoppingCart> shoppingCart = new HashSet<>();
+    private List<ShoppingCart> shoppingCart;
     private BigDecimal totalPrice;
 
     public Integer getId() {
@@ -36,11 +37,11 @@ public class Ordered {
         this.customer = customer;
     }
 
-    public Set<ShoppingCart> getShoppingCart() {
+    public List<ShoppingCart> getShoppingCart() {
         return shoppingCart;
     }
 
-    public void setShoppingCart(Set<ShoppingCart> shoppingCart) {
+    public void setShoppingCart(List<ShoppingCart> shoppingCart) {
         this.shoppingCart = shoppingCart;
     }
 

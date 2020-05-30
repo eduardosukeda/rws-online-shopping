@@ -2,7 +2,7 @@ package br.com.fiap.rwsonlineshopping.controller;
 
 import br.com.fiap.rwsonlineshopping.dto.OrderedDTO;
 import br.com.fiap.rwsonlineshopping.dto.ProductDTO;
-import org.springframework.beans.factory.annotation.Autowired;
+import br.com.fiap.rwsonlineshopping.entity.Ordered;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,9 +29,20 @@ public class OrderedController {
         this.customerService = customerService;
     }
 
-    @PostMapping(produces = {"application/json"})
-    public ResponseEntity<OrderedDTO> create(@RequestParam Integer customerId, @RequestBody List<ProductDTO> productDTOList) {
-        OrderedDTO response = orderedService.create(customerId, productDTOList);
+    @GetMapping("{id}")
+    public ResponseEntity<OrderedDTO> get(@PathVariable Integer id) {
+        OrderedDTO response = orderedService.get(id);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
+
+    @PostMapping
+    public ResponseEntity<OrderedDTO> create(@RequestParam Integer customerId, @RequestBody List<ProductDTO> productDTOList) {
+        OrderedDTO response = orderedService.create(new Ordered(), customerId, productDTOList);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable Integer id) {
+        orderedService.delete(id);
     }
 }

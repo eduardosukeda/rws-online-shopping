@@ -8,6 +8,8 @@ import java.io.Serializable;
 @IdClass(ShoppingCart.class)
 public class ShoppingCart implements Serializable {
 
+    private static final long serialVersionUID = 548337594683494407L;
+
     @Id
     @ManyToOne
     @JoinColumn

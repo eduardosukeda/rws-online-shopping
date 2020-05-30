@@ -1,17 +1,16 @@
 package br.com.fiap.rwsonlineshopping.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "TB_PRODUCT")
 public class Product implements Serializable {
+
+    private static final long serialVersionUID = 2905195962538017534L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +19,7 @@ public class Product implements Serializable {
     private Integer quantity;
     private BigDecimal price;
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-    private Set<ShoppingCart> shoppingCartList;
+    private List<ShoppingCart> shoppingCartList;
 
     public Product() {
     }

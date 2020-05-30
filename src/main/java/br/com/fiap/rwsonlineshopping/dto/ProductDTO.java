@@ -1,8 +1,11 @@
 package br.com.fiap.rwsonlineshopping.dto;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class ProductDTO {
+public class ProductDTO implements Serializable {
+
+    private static final long serialVersionUID = 1410424084237858562L;
 
     private Integer id;
     private String name;

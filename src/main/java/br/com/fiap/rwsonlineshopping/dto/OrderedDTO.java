@@ -2,10 +2,13 @@ package br.com.fiap.rwsonlineshopping.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
-public class OrderedDTO {
+public class OrderedDTO implements Serializable {
+
+    private static final long serialVersionUID = 8810166465027706467L;
 
     private Integer id;
     private Integer customerId;
