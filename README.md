@@ -7,6 +7,8 @@
 
 2 - Possuir uma IDE para execução.
 
+3 - Executar o redis encontrado na pasta redis/redis-server.exe
+
 
 ## Spring Framework
 
