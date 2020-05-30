@@ -30,3 +30,17 @@
 Pode ser acessado através da seguinte URL: localhost:8080/swagger-ui.html
 
 ## Modelo do banco de dados
+![Image description](https://github.com/eduardosukeda/rws-online-shopping/blob/master/images/model_database.PNG)
+
+## Entidades
+- Customer
+- Ordered
+- Product
+- ShoppingCart
+
+## SQL Server Database
+Escolhemos o SQL Server, por ser um banco de dados relacional onde é altamente estruturado, possibilizando a organização dos dados em relações, onde cada relacionamento é visto como entidade/tabela.
+
+## RM's
+- Eduardo Sukeda de Arruda (335537)
+- André da Silva Brito (335444)
